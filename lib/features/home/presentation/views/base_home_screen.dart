@@ -1,0 +1,24 @@
+import 'package:appnest_task/core/router/app_router.dart';
+import 'package:appnest_task/features/home/presentation/widgets/nav_bar/bottom_nav_bar.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+
+@RoutePage()
+class BaseHomeScreen extends StatelessWidget {
+  const BaseHomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AutoTabsRouter.pageView(
+      builder: (context, child, pageController) => Scaffold(
+        body: child,
+        bottomNavigationBar: const BottomNavBar(),
+      ),
+      physics: const NeverScrollableScrollPhysics(),
+      routes: const [
+        HomeRoute(),
+        CartRoute(),
+      ],
+    );
+  }
+}
