@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';
 
+import '../widgets/empty_cart_widget.dart';
 import '../widgets/go_to_checkout_button.dart';
 
 @RoutePage()
@@ -68,39 +69,3 @@ class _CartScreenState extends ConsumerState<CartScreen> {
   }
 }
 
-class EmptyCartWidget extends StatelessWidget {
-  const EmptyCartWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(
-          child: Lottie.asset(
-            'assets/lottie/empty_cart.json',
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          'لا يوجد اي منتجات ف السلة',
-          style: AppTextStyle.getW500(fontSize: 16),
-        ),
-        const SizedBox(height: 16),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.primaryColor,
-            foregroundColor: Colors.white,
-          ),
-          onPressed: () => AutoTabsRouter.of(context).setActiveIndex(0),
-          child: Text(
-            'اذهب للتسوق',
-            style: AppTextStyle.getW500(
-              fontSize: 16,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
